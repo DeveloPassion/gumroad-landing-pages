@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: { fontFamily: { sans: ['Noto Sans','system-ui','-apple-system','Segoe UI','Roboto','sans-serif'] } } },
+  };
+</script>
+<style>
+  :root{
+    --bg:#f5f7fa; --surface:#ffffff; --surface-2:#eef1f6; --text:#1a1a2e;
+    --muted:#5b6472; --border:rgba(0,0,0,.08); --brand:#d10070; --brand-ink:#fff;
+    --problem:#dc2626; --agitate:#d97706; --solution:#059669;
+  }
+  html.dark{
+    --bg:#37404c; --surface:#3f4957; --surface-2:#2f3741; --text:#ffffff;
+    --muted:rgba(255,255,255,.66); --border:rgba(255,255,255,.12); --brand:#e5007d; --brand-ink:#fff;
+    --problem:#f87171; --agitate:#fbbf24; --solution:#34d399;
+  }
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font-family:'Noto Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.65;
+       -webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+  a{color:var(--brand)}
+  .muted{color:var(--muted)}
+  .brand{color:var(--brand)}
+  .surface{background:var(--surface);border:1px solid var(--border);border-radius:18px}
+  .soft{background:var(--surface-2)}
+  .btn-buy{display:inline-flex;align-items:center;gap:.5rem;background:var(--brand);color:var(--brand-ink);
+           text-decoration:none;font-weight:700;padding:15px 30px;border-radius:999px;border:none;cursor:pointer;
+           box-shadow:0 10px 28px -8px var(--brand);transition:transform .15s ease,box-shadow .15s ease;font-size:1.05rem}
+  .btn-buy:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px var(--brand)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);color:var(--text);
+             background:transparent;border-radius:999px;padding:9px 16px;cursor:pointer;font-weight:600}
+  .chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.85rem}
+  .hero-aura{position:absolute;inset:-20% -10% auto;height:520px;z-index:0;pointer-events:none;
+             background:radial-gradient(60% 60% at 50% 0%,color-mix(in srgb,var(--brand) 26%,transparent),transparent 70%)}
+  :focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--brand);color:#fff;padding:10px 16px;border-radius:8px;z-index:60}
+  .skip:focus{left:8px}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn-buy{transition:none}}
+</style>
+</head>
+
+<body class="font-sans">
+<a href="#buy" class="skip">Skip to purchase</a>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 backdrop-blur" style="background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--border)">
+  <div class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between gap-3">
+    <span class="font-extrabold tracking-tight truncate"><span class="brand">●</span> <span data-gumroad-field="name">Knowii — Journaling Deep Dive</span></span>
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" class="btn-ghost" type="button" aria-label="Switch colour theme" aria-pressed="false">
+        <span id="theme-emoji" aria-hidden="true">🌙</span><span class="hidden sm:inline">Theme</span>
+      </button>
+      <a href="#buy" class="btn-buy !py-2.5 !px-5 !text-base">Get it</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="relative overflow-hidden px-5 pt-16 pb-14">
+    <div class="hero-aura"></div>
+    <div class="max-w-5xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="brand font-bold uppercase tracking-wider text-sm mb-3">Stop blanking on "What did you do this month?"</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">Your journal as a <span class="brand">life operating system</span></h1>
+        <p class="text-lg muted mb-7 max-w-xl">An 80-minute deep dive into the journaling system I refined over 10+ years across a 10,000-note vault. Not "Dear Diary." A system that captures what matters, tracks what you achieve, and keeps you moving forward.</p>
+        <div class="flex flex-wrap items-center gap-4 mb-5">
+          <a href="#buy" class="btn-buy" data-gumroad-action="buy">Get instant access — <span data-gumroad-field="price">€29.99</span></a>
+          <span class="muted text-sm">Lifetime access · instant delivery</span>
+        </div>
+        <ul class="flex flex-wrap gap-2" aria-label="Highlights">
+          <li class="chip">10+ years refined</li><li class="chip">80-minute workshop</li>
+          <li class="chip">40+ knowledge notes</li><li class="chip">Real journal examples</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <img src="https://public-files.gumroad.com/drw0iwxup5q30wjct86fcxm2qgp4"
+             width="1280" height="720" loading="eager"
+             alt="Journaling Deep Dive workshop cover — Knowii"
+             class="w-full rounded-2xl shadow-2xl border" style="border-color:var(--border)">
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="px-5 py-14">
+    <div class="max-w-3xl mx-auto reveal">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-3" style="color:var(--problem)">Your life is slipping away, one forgotten moment at a time</h2>
+      <ul class="space-y-2 mt-4">
+        <li class="flex gap-3"><span aria-hidden="true" style="color:var(--problem)">✗</span><span class="muted">End of months feel empty — busy, but nothing to show</span></li>
+        <li class="flex gap-3"><span aria-hidden="true" style="color:var(--problem)">✗</span><span class="muted">Beautiful moments with loved ones fade into nothing</span></li>
+        <li class="flex gap-3"><span aria-hidden="true" style="color:var(--problem)">✗</span><span class="muted">Brilliant ideas vanish before you can act on them</span></li>
+        <li class="flex gap-3"><span aria-hidden="true" style="color:var(--problem)">✗</span><span class="muted">You blank when someone asks what you accomplished</span></li>
+        <li class="flex gap-3"><span aria-hidden="true" style="color:var(--problem)">✗</span><span class="muted">Life feels like it's happening TO you, not BY you</span></li>
+      </ul>
+      <p class="mt-6 text-lg">Your brain wasn't designed to remember. That golden sunset walk? Gone in days. That shower insight? Forgotten by lunch. <strong>The brain is functional, not faithful</strong> — it forgets what you don't actively reinforce.</p>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="px-5 py-14">
+    <div class="max-w-3xl mx-auto reveal">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-3" style="color:var(--solution)">A journaling system that becomes the foundation of your life</h2>
+      <p class="muted mb-6">Not a diary. A personal operating system that captures what matters, tracks what you achieve, and keeps you focused on what's next.</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="surface p-4 flex gap-3"><span aria-hidden="true" style="color:var(--solution)">✓</span> Capture moments before they vanish</div>
+        <div class="surface p-4 flex gap-3"><span aria-hidden="true" style="color:var(--solution)">✓</span> Track progress so you actually SEE growth</div>
+        <div class="surface p-4 flex gap-3"><span aria-hidden="true" style="color:var(--solution)">✓</span> Hold yourself accountable without guilt</div>
+        <div class="surface p-4 flex gap-3"><span aria-hidden="true" style="color:var(--solution)">✓</span> Process experiences into lasting wisdom</div>
+        <div class="surface p-4 flex gap-3"><span aria-hidden="true" style="color:var(--solution)">✓</span> Build a knowledge base that grows with you</div>
+        <div class="surface p-4 flex gap-3"><span aria-hidden="true" style="color:var(--solution)">✓</span> Stay focused on what truly matters</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="px-5 py-14">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-extrabold tracking-tight text-center mb-10 reveal">What's inside</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="surface p-6 reveal"><h3 class="font-bold mb-1">80-minute video recording</h3><p class="muted text-sm">Complete system walkthrough: theory, practice, demonstrations.</p></div>
+        <div class="surface p-6 reveal"><h3 class="font-bold mb-1">System visualization diagram</h3><p class="muted text-sm">A visual map showing how everything connects.</p></div>
+        <div class="surface p-6 reveal"><h3 class="font-bold mb-1">Show notes & agenda</h3><p class="muted text-sm">Key takeaways and session structure for quick reference.</p></div>
+        <div class="surface p-6 reveal"><h3 class="font-bold mb-1">40+ knowledge base notes</h3><p class="muted text-sm">Every concept and technique, interconnected and explorable.</p></div>
+        <div class="surface p-6 reveal"><h3 class="font-bold mb-1">Real journal examples</h3><p class="muted text-sm">Anonymized but authentic notes from my actual daily and weekly practice.</p></div>
+        <div class="surface p-6 reveal soft"><h3 class="font-bold mb-1">Lifetime access</h3><p class="muted text-sm">Buy once. Keep every update, forever.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After -->
+  <section class="px-5 py-14">
+    <div class="max-w-4xl mx-auto reveal">
+      <h2 class="text-3xl font-extrabold tracking-tight text-center mb-10">Before &amp; after</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="surface p-6"><h3 class="font-bold mb-3" style="color:var(--problem)">Before</h3>
+          <ul class="space-y-2 muted">
+            <li>Months end and you can't recall what happened</li><li>Ideas come and go without capture</li>
+            <li>Life feels scattered and reactive</li><li>Progress feels invisible</li></ul></div>
+        <div class="surface p-6"><h3 class="font-bold mb-3" style="color:var(--solution)">After</h3>
+          <ul class="space-y-2">
+            <li>Look back on rich, documented years</li><li>Ideas captured become future action</li>
+            <li>Life feels intentional and designed</li><li>Growth visible and building on itself</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fit -->
+  <section class="px-5 py-14">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
+      <div class="surface p-6 reveal"><h3 class="font-bold mb-3" style="color:var(--solution)">Perfect for you if…</h3>
+        <ul class="space-y-2 muted">
+          <li>You're busy all the time but struggle to see progress</li>
+          <li>Beautiful moments slip away before you hold them</li>
+          <li>Great ideas vanish before you act</li>
+          <li>You want to be intentional, not reactive</li>
+          <li>You've tried journaling but couldn't make it stick</li></ul></div>
+      <div class="surface p-6 reveal"><h3 class="font-bold mb-3" style="color:var(--problem)">Not for you if…</h3>
+        <ul class="space-y-2 muted">
+          <li>You're happy forgetting most of your life</li>
+          <li>You prefer reacting to life instead of designing it</li>
+          <li>You won't invest a few minutes throughout your day</li></ul></div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="px-5 py-14">
+    <div class="max-w-2xl mx-auto reveal text-center">
+      <blockquote class="surface p-8">
+        <p class="text-xl">"Big thanks. Truly deep. Truly useful. You nailed why journaling works."</p>
+        <footer class="muted mt-4">— Julien Dambron</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="buy" class="px-5 py-16">
+    <div class="max-w-2xl mx-auto surface p-8 md:p-10 text-center reveal" style="border-width:2px;border-color:var(--brand)">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-3">Start documenting the life you're actually living</h2>
+      <p class="muted mb-2">Everything included, lifetime access:</p>
+      <ul class="muted text-sm mb-6 inline-block text-left space-y-1">
+        <li>✓ 80-minute video training</li><li>✓ 40+ knowledge notes you can explore</li>
+        <li>✓ Real examples from my actual journal</li><li>✓ Lifetime access to all materials</li>
+      </ul>
+      <div class="flex flex-col items-center gap-3">
+        <a class="btn-buy text-lg" data-gumroad-action="buy">Get instant access — <span data-gumroad-field="price">€29.99</span></a>
+        <span class="muted text-sm">One-time payment · instant delivery · yours forever</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="px-5 py-10 text-center muted text-sm border-t" style="border-color:var(--border)">
+  <p>A Knowii workshop by Sébastien Dubois · DeveloPassion</p>
+</footer>
+
+<script>
+  // Theme: respect saved choice, else system preference. localStorage may be sandboxed — guard it.
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('theme-toggle'), emoji = document.getElementById('theme-emoji');
+    function read(){ try { return localStorage.getItem('gr-theme'); } catch(e){ return null; } }
+    function save(v){ try { localStorage.setItem('gr-theme', v); } catch(e){} }
+    function apply(dark){
+      root.classList.toggle('dark', dark);
+      btn.setAttribute('aria-pressed', String(dark));
+      emoji.textContent = dark ? '☀️' : '🌙';
+    }
+    var saved = read();
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    apply(saved ? saved === 'dark' : !!prefersDark);
+    btn.addEventListener('click', function () {
+      var dark = !root.classList.contains('dark');
+      apply(dark); save(dark ? 'dark' : 'light');
+    });
+  })();
+
+  // Scroll reveal (skipped automatically under prefers-reduced-motion via CSS).
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e){ e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach(function (e){ io.observe(e); });
+  })();
+</script>
+</body>
+</html>
