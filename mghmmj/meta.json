@@ -6,5 +6,5 @@
   "landing_url": "https://developassion.gumroad.com/l/obsidian-starter-kit",
   "last_published": "2026-06-10",
   "last_preview_total_removed": 0,
-  "source": "rendered (gumroad-landing-template render.mjs, store-website local working copy with v4 sales copy)"
+  "source": "rendered (gumroad-landing-template render.mjs --local store-website --media-map media-map.json; screenshots uploaded as product covers)"
 }
